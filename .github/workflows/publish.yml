@@ -23,6 +23,6 @@ jobs:
       run: mvn clean install
 
     - name: Publish to GitHub Packages
-      run: mvn deploy -X
+      run: mvn deploy
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_PACKAGES }}
