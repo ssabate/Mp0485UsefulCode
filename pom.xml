@@ -37,6 +37,13 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/ssabate/Mp0485UsefulCode</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
