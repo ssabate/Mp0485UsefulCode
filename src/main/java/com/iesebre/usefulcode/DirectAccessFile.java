@@ -1,7 +1,6 @@
-package com.iesebre.library20242025;
+package com.iesebre.usefulcode;
 
 import java.io.*;
-import java.util.Random;
 
 public class DirectAccessFile<T extends Serializable> implements Closeable, AutoCloseable {
 
@@ -331,72 +330,4 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     public void close() throws IOException {
         raf.close();
     }
-}
-
-class Pojo implements Serializable {
-
-    private String nom;
-    private int pes;
-
-    public Pojo(String nom, int pes) {
-        this.nom = nom;
-        this.pes = pes;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getPes() {
-        return pes;
-    }
-
-    public void setPes(int pes) {
-        this.pes = pes;
-    }
-
-    @Override
-    public String toString() {
-        return "Pojo{" +
-                "nom='" + nom + '\'' +
-                ", pes=" + pes +
-                '}';
-    }
-
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        DirectAccessFile f = new DirectAccessFile();
-        f.deleteAll();
-
-        f.writeObject(new Pojo("primer",70),4);
-        for (int i = 0; i < 10; i++) {
-            int pos=new Random().nextInt(f.size()+1);
-            System.out.println("Anem a insertar l'objecte: "+pos);
-            f.writeObject(new Pojo("nom"+i, i+new Random().nextInt(100)),pos);
-            f.writeObject(new Pojo("nom_final" + i, new Random().nextInt(100)));
-        }
-        f.goToBeginning();
-        for (int i = 0; i < f.size(); i++) {
-            System.out.println(f.readObject());
-        }
-
-        for (int i = 0; i <10 ; i++) {
-            int pos=new Random().nextInt(f.size()+1);
-            System.out.println("Anem a borrar l'objecte: "+pos);
-            f.deleteObject(pos);
-
-        }
-
-        for (int i = 0; i < f.size(); i++) {
-            System.out.println(f.readObject(i));
-        }
-
-        f.close();
-
-    }
-
 }
