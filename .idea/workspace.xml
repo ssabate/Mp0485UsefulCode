@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc57992-ec56-4073-abc6-b0189a164c49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/library20242025/Cadena.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/library20242025/Data.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/library20242025/DirectAccessFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/library20242025/Numero.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/library20242025/Temps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/iesebre/library20242025/CadenaTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/iesebre/library20242025/DirectAccessFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/iesebre/usefulcode/DirectAccessFileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738856808769</updated>
-      <workItem from="1738856810578" duration="364000" />
+      <workItem from="1738856810578" duration="494000" />
     </task>
     <servers />
   </component>
