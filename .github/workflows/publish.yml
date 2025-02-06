@@ -23,6 +23,6 @@ jobs:
       run: cd MyFirstLibrary & mvn clean install
 
     - name: Publish to GitHub Packages
-      run: mvn deploy
+      run: mvn deploy -X
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_PACKAGES }}
