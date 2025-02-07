@@ -22,6 +22,12 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
+    - name: Uses setting actions
+        uses: s4u/maven-settings-action@v2.5.0
+        with:
+          servers: '[
+            {"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.TOKEN_PACKAGES }}"}}}}]'
+
     - name: Publish to GitHub Packages
       run: mvn clean source:jar deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -Dmaven.install.skip=true -DdeplyAtEnd=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/ssabate/Mp0485UsefulCode'
       env:
