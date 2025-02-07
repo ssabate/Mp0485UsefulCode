@@ -28,20 +28,18 @@
             <version>3.21.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.ssabate</groupId>
+            <artifactId>Mp0485UsefulCode</artifactId>
+            <version>v1.0</version>
+        </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/ssabate/Mp0485UsefulCode</url>
-        </repository>
-    </distributionManagement>
+
 
     <repositories>
         <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/ssabate/Mp0485UsefulCode</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
     <build>

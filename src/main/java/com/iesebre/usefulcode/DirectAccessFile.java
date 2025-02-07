@@ -330,4 +330,8 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     public void close() throws IOException {
         raf.close();
     }
+
+    public void naif() {
+        System.out.println("Naif");
+    }
 }
