@@ -20,6 +20,14 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     public DirectAccessFile(String name) throws IOException {
         this.name = name;
         raf = new RandomAccessFile(name, "rw");
+        comptObjs=countObjects();
+    }
+
+    private int countObjects() throws IOException {
+        int count=0;
+        this.goToBeginning();
+        for(;readObject()!=null;count++);
+        return count;
     }
 
     /**
@@ -29,6 +37,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
      */
     public DirectAccessFile() throws IOException {
         raf = new RandomAccessFile(name, "rw");
+        comptObjs=countObjects();
     }
 
     // Getters and setters

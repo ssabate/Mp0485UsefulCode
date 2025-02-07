@@ -27,8 +27,22 @@
             <version>3.21.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.ssabate</groupId>
+            <artifactId>Mp0485UsefulCode</artifactId>
+            <version>7e9f60e</version>
+        </dependency>
     </dependencies>
-    <distributionManagement>
+
+
+<repositories>
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+</repositories>
+
+<distributionManagement>
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>

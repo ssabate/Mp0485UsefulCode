@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc57992-ec56-4073-abc6-b0189a164c49" name="Changes" comment="" />
+    <list default="true" id="dcc57992-ec56-4073-abc6-b0189a164c49" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +53,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/profe/GOOGLE_DRIVE/IdeaProjects/2024-2025/Mp0485UsefulCode&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/profe/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/maven/lib/maven3/conf/settings.xml&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,6 +105,7 @@
       <workItem from="1738856810578" duration="494000" />
       <workItem from="1738876856241" duration="3125000" />
       <workItem from="1738914908122" duration="743000" />
+      <workItem from="1738943586019" duration="3168000" />
     </task>
     <servers />
   </component>
