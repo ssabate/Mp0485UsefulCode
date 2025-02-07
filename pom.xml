@@ -7,7 +7,7 @@
 
     <groupId>com.iesebre.usefulcode</groupId>
     <artifactId>Mp0485UsefulCode</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>com.github.ssabate</groupId>
             <artifactId>Mp0485UsefulCode</artifactId>
-            <version>v1.0</version>
+            <version>v1.1</version>
         </dependency>
     </dependencies>
 
