@@ -309,6 +309,9 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
             readPos += bytesRead;
             writePos += bytesRead;
         }
+
+        //Acursem el fitxer, sinó se queden objectes pel final
+        raf.setLength(raf.length()-movementSize);
     }
 
     /**
