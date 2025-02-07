@@ -23,6 +23,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         comptObjs=countObjects();
     }
 
+    //When creating the daf we need to know how many objects does it have
     private int countObjects() throws IOException {
         int count=0;
         this.goToBeginning();
@@ -202,6 +203,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         return null;
     }
 
+    //Is like readObject() without taking into account the current value of comptObjs
     private T readObjectInit() throws IOException {
 
         // Find the position in the file of the object, skipping previous objects until reaching
@@ -310,6 +312,28 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     }
 
     /**
+     * Updates the object at the specified position in the file
+     *
+     * @param object the new props of the updated object
+     * @param position an integer value
+     * @return the updated object before update if found, null otherwise. The position must be greater than or equal to 0 and less than the number of objects in the file.
+     * @throws IOException            if an input/output error occurs
+     * @throws ClassNotFoundException if the class of the instance to be updated is not found
+     */
+    public T updateObject(T object, int position) throws IOException, ClassNotFoundException {
+        if (position < 0 || comptObjs == 0 || position >= comptObjs) return null;
+
+        // Retrieve the object to be updated
+        T resultat = (T) this.readObject(position); // We found an object
+
+        // First we delete the current object and then we insert the new
+        this.deleteObject(position);
+        this.writeObject(object, position);
+
+        return resultat;
+    }
+
+    /**
      * Closes this resource, relinquishing any underlying resources.
      * This method is invoked automatically on objects managed by the
      * {@code try}-with-resources statement.
@@ -359,7 +383,4 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         raf.close();
     }
 
-    public void naif() {
-        System.out.println("Naif");
-    }
 }
