@@ -23,8 +23,8 @@ jobs:
       run: mvn clean install
 
     - name: Uses setting actions
-        uses: s4u/maven-settings-action@v2.5.0
-        with:
+      uses: s4u/maven-settings-action@v2.5.0
+      with:
           servers: '[
             {"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.TOKEN_PACKAGES }}"}}}}]'
 
