@@ -26,7 +26,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     private int countObjects() throws IOException {
         int count=0;
         this.goToBeginning();
-        for(;readObject()!=null;count++);
+        for(;readObjectInit()!=null;count++);
         return count;
     }
 
@@ -175,6 +175,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         } while (true);
     }
 
+
     /**
      * Retrieves the instance at the current position of the file pointer
      *
@@ -184,6 +185,24 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     public T readObject() throws IOException {
         // If there are no objects
         if (comptObjs == 0) return null;
+
+        // Find the position in the file of the object, skipping previous objects until reaching
+        try {
+            int length = raf.readInt(); // Read the length of the object
+
+            byte[] data = new byte[length];
+            raf.readFully(data); // Read the object data
+            raf.seek(raf.getFilePointer() + 4);
+            ByteArrayInputStream bis = new ByteArrayInputStream(data);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            return ((T) ois.readObject());
+        } catch (ClassNotFoundException | EOFException e) {
+            // If the position was incorrect
+        }
+        return null;
+    }
+
+    private T readObjectInit() throws IOException {
 
         // Find the position in the file of the object, skipping previous objects until reaching
         try {
