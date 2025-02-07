@@ -31,4 +31,4 @@ jobs:
     - name: Publish to GitHub Packages
       run: mvn clean source:jar deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -Dmaven.install.skip=true -DdeplyAtEnd=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/ssabate/Mp0485UsefulCode'
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_PACKAGES }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
