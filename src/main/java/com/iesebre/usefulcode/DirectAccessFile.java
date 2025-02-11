@@ -61,9 +61,8 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
      * @param position an integer value
      * @return true if the object was successfully written, false otherwise. The position must be greater than or equal to 0.
      * @throws IOException            if an input/output error occurs
-     * @throws ClassNotFoundException if the class of the instance to be saved is not found
      */
-    public boolean writeObject(T object, int position) throws IOException, ClassNotFoundException {
+    public boolean writeObject(T object, int position) throws IOException {
         if (position < 0) return false;
 
         // Find the position where the new object should go, skipping previous objects until reaching the position or the end of the file (in this case, the position will be the last one, and may not match the specified one)
