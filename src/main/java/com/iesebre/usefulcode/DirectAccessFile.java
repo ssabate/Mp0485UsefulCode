@@ -4,7 +4,7 @@ import java.io.*;
 
 /**
  * 1. Què és DirectAccessFile?
- * DirectAccessFile<T> és una classe genèrica que permet guardar, llegir, inserir, actualitzar i esborrar objectes dins d’un fitxer binari utilitzant accés directe (RandomAccessFile).
+ * DirectAccessFile{@literal <}T{@literal >} és una classe genèrica que permet guardar, llegir, inserir, actualitzar i esborrar objectes dins d’un fitxer binari utilitzant accés directe (RandomAccessFile).
  * Característiques principals:
  * Permet guardar objectes de qualsevol classe sempre que implementin Serializable.
  *
@@ -45,7 +45,7 @@ import java.io.*;
  *         this.edat = edat;
  *     }
  *
- *     @Override
+ *     &#64;Override
  *     public String toString() {
  *         return nom + " (" + edat + ")";
  *     }
@@ -54,13 +54,13 @@ import java.io.*;
  *
  * 3. Crear un fitxer d’accés directe
  * Amb nom de fitxer personalitzat
- * DirectAccessFile<Alumne> daf = new DirectAccessFile<>("alumnes.dat");
+ * DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}("alumnes.dat");
  *
  * Amb nom per defecte (dades.dat)
- * DirectAccessFile<Alumne> daf = new DirectAccessFile<>();
+ * DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}();
  *
  * 💡 Es recomana utilitzar try-with-resources perquè el fitxer es tanqui automàticament:
- * try (DirectAccessFile<Alumne> daf = new DirectAccessFile<>("alumnes.dat")) {
+ * try (DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}("alumnes.dat")) {
  *     // treball amb el fitxer
  * }
  *
@@ -161,7 +161,7 @@ import java.io.*;
  *
  * Quan cal accés directe per índex.
  *
- * @param <T> qualsevol classe que implementi la interfície java.io.Serializable
+ *
  */
 
 public class DirectAccessFile<T extends Serializable> implements Closeable, AutoCloseable {
