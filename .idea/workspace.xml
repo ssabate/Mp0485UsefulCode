@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dcc57992-ec56-4073-abc6-b0189a164c49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/iesebre/usefulcode/DirectAccessFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/iesebre/usefulcode/DirectAccessFileTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +58,21 @@
     "Maven.Mp0485UsefulCodev1.2 [test].executor": "Run",
     "Maven.Mp0485UsefulCodev1.2 [validate].executor": "Run",
     "Maven.Mp0485UsefulCodev1.2 [verify].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [clean].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [compile].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [deploy].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [install].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [package].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [site].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [test].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [validate].executor": "Run",
+    "Maven.Mp0485UsefulCodev2.0 [verify].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/profe/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/maven/lib/maven3/conf/settings.xml",
+    "last_opened_file_path": "/home/compartido/GOOGLE_DRIVE/IdeaProjects/2024-2025/Mp0485UsefulCode",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -94,14 +105,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -120,7 +123,52 @@
       <workItem from="1739178340152" duration="599000" />
       <workItem from="1739187632821" duration="599000" />
       <workItem from="1739257707080" duration="2022000" />
-      <workItem from="1739265175636" duration="259000" />
+      <workItem from="1739265175636" duration="3142000" />
+      <workItem from="1739371130486" duration="1005000" />
+      <workItem from="1739809471940" duration="210000" />
+      <workItem from="1739809700485" duration="687000" />
+      <workItem from="1739819126746" duration="54000" />
+      <workItem from="1739819226258" duration="312000" />
+      <workItem from="1739819631770" duration="39000" />
+      <workItem from="1739862385764" duration="599000" />
+      <workItem from="1739870500254" duration="599000" />
+      <workItem from="1739903154910" duration="345000" />
+      <workItem from="1739987075401" duration="505000" />
+      <workItem from="1740078802190" duration="98000" />
+      <workItem from="1740079412827" duration="233000" />
+      <workItem from="1740383025500" duration="81000" />
+      <workItem from="1740394592334" duration="510000" />
+      <workItem from="1740395176743" duration="599000" />
+      <workItem from="1740506440479" duration="599000" />
+      <workItem from="1740579249238" duration="244000" />
+      <workItem from="1740579555220" duration="599000" />
+      <workItem from="1741607129072" duration="599000" />
+      <workItem from="1741676945619" duration="599000" />
+      <workItem from="1741940184712" duration="599000" />
+      <workItem from="1742211876203" duration="599000" />
+      <workItem from="1742808061652" duration="599000" />
+      <workItem from="1742816663837" duration="599000" />
+      <workItem from="1742892771629" duration="474000" />
+      <workItem from="1743101492454" duration="599000" />
+      <workItem from="1743149328551" duration="598000" />
+      <workItem from="1743228288353" duration="599000" />
+      <workItem from="1743418804836" duration="599000" />
+      <workItem from="1743434301014" duration="599000" />
+      <workItem from="1743436555281" duration="599000" />
+      <workItem from="1743533221674" duration="303000" />
+      <workItem from="1743585766892" duration="599000" />
+      <workItem from="1743665234044" duration="78000" />
+      <workItem from="1743665356947" duration="64000" />
+      <workItem from="1744311359129" duration="178000" />
+      <workItem from="1744355031315" duration="618000" />
+      <workItem from="1744605393786" duration="599000" />
+      <workItem from="1745273298223" duration="642000" />
+      <workItem from="1745303771569" duration="1232000" />
+      <workItem from="1745308511040" duration="350000" />
+      <workItem from="1745324478432" duration="599000" />
+      <workItem from="1745567665282" duration="304000" />
+      <workItem from="1745567993458" duration="599000" />
+      <workItem from="1745778330603" duration="23000" />
     </task>
     <servers />
   </component>
