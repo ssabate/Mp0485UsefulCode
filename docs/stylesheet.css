@@ -857,15 +857,18 @@ span#page-search-link {
 section.class-description {
     line-height: 1.4;
 }
-/* --- START: preserve line breaks and paragraph spacing for class descriptions --- */
-/* Preserve line breaks added in Javadoc and show paragraph spacing similar to source file */
+/* --- START: ensure Javadoc paragraphs and line breaks are preserved in generated pages --- */
+/* Regla existente para class-description ya añadida; añadimos selectores extra por si el doclet usa otros contenedores */
 section.class-description,
-section.class-description .block {
-    white-space: pre-wrap; /* respeta saltos de línea */
-    word-break: break-word; /* evita desbordes largos */
+section.class-description .block,
+div.block,                 /* documentación generada en contenedores genéricos */
+div.content .block,        /* si el doclet anida la descripción en .content */
+.main .block {
+    white-space: pre-wrap; /* respeta saltos de línea i línies buides */
+    word-break: break-word;
 }
 
-/* Añadir margen vertical a los párrafos dentro de bloques de documentación */
+/* Márgenes razonables para párrafos dentro de bloques de documentación */
 section.class-description p,
 section.class-description .block p,
 div.block p {

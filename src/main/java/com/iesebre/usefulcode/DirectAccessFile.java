@@ -3,37 +3,24 @@ package com.iesebre.usefulcode;
 import java.io.*;
 
 /**
- * 1. Què és DirectAccessFile?
- * DirectAccessFile{@literal <}T{@literal >} és una classe genèrica que permet guardar, llegir, inserir, actualitzar i esborrar objectes dins d’un fitxer binari utilitzant accés directe (RandomAccessFile).
- * Característiques principals:
- * Permet guardar objectes de qualsevol classe sempre que implementin Serializable.
+ * <p>1. Què és DirectAccessFile?</p>
+ * <p>DirectAccessFile{@literal <}T{@literal >} és una classe genèrica que permet guardar, llegir, inserir, actualitzar i esborrar objectes dins d’un fitxer binari utilitzant accés directe (RandomAccessFile).</p>
+ * <p>Característiques principals: Permet guardar objectes de qualsevol classe sempre que implementin Serializable.</p>
  *
+ * <p>Els objectes es poden:</p>
+ * <p> - Accedir per posició (accés directe).</p>
+ * <p> - Recórrer seqüencialment.</p>
  *
- * Els objectes es poden:
+ * <p>Es poden fer:</p>
+ * <p> - Insercions en qualsevol posició.</p>
+ * <p> - Actualitzacions.</p>
+ * <p> - Esborrats.</p>
  *
+ * <p>2. Requisits per als objectes</p>
+ * <p>Qualsevol classe que es vulgui guardar ha d’implementar Serializable.</p>
  *
- * Accedir per posició (accés directe).
- *
- *
- * Recórrer seqüencialment.
- *
- *
- * Es poden fer:
- *
- *
- * Insercions en qualsevol posició.
- *
- *
- * Actualitzacions.
- *
- *
- * Esborrats.
- *
- *
- *
- * 2. Requisits per als objectes
- * Qualsevol classe que es vulgui guardar ha d’implementar Serializable.
- * Exemple:
+ * <p>Exemple:</p>
+ * <pre>
  * import java.io.Serializable;
  *
  * public class Alumne implements Serializable {
@@ -50,91 +37,82 @@ import java.io.*;
  *         return nom + " (" + edat + ")";
  *     }
  * }
+ * </pre>
  *
+ * <p>3. Crear un fitxer d’accés directa</p>
+ * <p>Amb nom de fitxer personalitzat:
+ * DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}("alumnes.dat");</p>
+ * <p>Amb nom per defecte (dades.dat):
+ * DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}();</p>
  *
- * 3. Crear un fitxer d’accés directe
- * Amb nom de fitxer personalitzat
- * DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}("alumnes.dat");
- *
- * Amb nom per defecte (dades.dat)
- * DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}();
- *
- * 💡 Es recomana utilitzar try-with-resources perquè el fitxer es tanqui automàticament:
+ * <p>💡 Es recomana utilitzar try-with-resources perquè el fitxer es tanqui automàticament:</p>
+ * <pre>
  * try (DirectAccessFile{@literal <}Alumne{@literal >} daf = new DirectAccessFile{@literal <}{@literal >}("alumnes.dat")) {
  *     // treball amb el fitxer
  * }
+ * </pre>
  *
+ * <p>4. Escriure objectes</p>
+ * <p>Afegir un objecte al final del fitxer:
+ * daf.writeObject(new Alumne("Anna", 20));</p>
  *
- * 4. Escriure objectes
- * Afegir un objecte al final del fitxer
- * daf.writeObject(new Alumne("Anna", 20));
- * daf.writeObject(new Alumne("Marc", 22));
+ * <p>Inserir un objecte en una posició concreta:
+ * daf.writeObject(new Alumne("Laura", 21), 1);</p>
  *
- * Inserir un objecte en una posició concreta
- * daf.writeObject(new Alumne("Laura", 21), 1);
- *
- * 📌 Les posicions comencen a 0
+ * <p>📌 Les posicions comencen a 0
  * Posició 0 → primer objecte
- *
  *
  * Posició 1 → segon objecte
  *
+ * Si la posició és més gran que la mida actual, l’objecte s’afegeix al final.</p>
  *
- * Si la posició és més gran que la mida actual, l’objecte s’afegeix al final.
- *
- * 5. Llegir objectes
- * Llegir un objecte per posició
+ * <p>5. Llegir objectes</p>
+ * <p>Llegir un objecte per posició:
  * Alumne a = daf.readObject(0);
- * System.out.println(a);
+ * System.out.println(a);</p>
  *
- * Llegir objectes seqüencialment
+ * <p>Llegir objectes seqüencialment
  * daf.goToBeginning();
  * Alumne a;
  *
  * while ((a = daf.readObject()) != null) {
  *     System.out.println(a);
- * }
+ * }</p>
  *
- *
- * 6. Saber quants objectes hi ha
+ * <p>6. Saber quants objectes hi ha
  * int total = daf.size();
- * System.out.println("Nombre d'objectes: " + total);
+ * System.out.println("Nombre d'objectes: " + total);</p>
  *
- *
- * 7. Esborrar objectes
- * Esborrar un objecte per posició
+ * <p>7. Esborrar objectes</p>
+ * <p>Esborrar un objecte per posició:
  * Alumne eliminat = daf.deleteObject(1);
- * System.out.println("Eliminat: " + eliminat);
+ * System.out.println("Eliminat: " + eliminat);</p>
  *
- * L’objecte es retorna abans de ser esborrat (si existeix).
+ * <p>L’objecte es retorna abans de ser esborrat (si existeix).</p>
  *
- * 8. Actualitzar objectes
- * Alumne anterior = daf.updateObject(new Alumne("Marc", 23), 1);
- * System.out.println("Abans de l'actualització: " + anterior);
+ * <p>8. Actualitzar objectes</p>
+ * <p>Alumne anterior = daf.updateObject(new Alumne("Marc", 23), 1);
+ * System.out.println("Abans de l'actualització: " + anterior);</p>
  *
- * 📌 Internament:
+ * <p>📌 Internament:
  * Es llegeix l’objecte antic.
- *
  *
  * S’esborra.
  *
+ * S’insereix el nou a la mateixa posició.</p>
  *
- * S’insereix el nou a la mateixa posició.
+ * <p>9. Esborrar tot el contingut del fitxer</p>
+ * <p>daf.deleteAll();</p>
  *
+ * <p>El fitxer queda buit i el nombre d’objectes passa a ser 0.</p>
  *
+ * <p>10. Navegació pel fitxer</p>
+ * <p>daf.goToBeginning(); // Anar a l'inici del fitxer
+ * daf.goToEnd();       // Anar al final del fitxer</p>
  *
- * 9. Esborrar tot el contingut del fitxer
- * daf.deleteAll();
+ * <p>Això és útil sobretot per a lectures seqüencials.</p>
  *
- * El fitxer queda buit i el nombre d’objectes passa a ser 0.
- *
- * 10. Navegació pel fitxer
- * daf.goToBeginning(); // Anar a l'inici del fitxer
- * daf.goToEnd();       // Anar al final del fitxer
- *
- * Això és útil sobretot per a lectures seqüencials.
- *
- * 11. Resum de mètodes principals
+ * <p>11. Resum de mètodes principals
  * Mètode
  * Funció
  * writeObject(obj)
@@ -152,15 +130,12 @@ import java.io.*;
  * size()
  * Nombre d’objectes
  * deleteAll()
- * Esborra tot el fitxer
+ * Esborra tot el fitxer</p>
  *
+ * <p>12. Quan és útil aquesta classe?</p>
+ * <p>Quan es vol treballar amb fitxers d’objectes sense usar bases de dades.</p>
  *
- * 12. Quan és útil aquesta classe?
- * Quan es vol treballar amb fitxers d’objectes sense usar bases de dades.
- *
- *
- * Quan cal accés directe per índex.
- *
+ * <p>Quan cal accés directe per índex.</p>
  *
  */
 

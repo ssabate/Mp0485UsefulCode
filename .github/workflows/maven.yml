@@ -1,0 +1,7 @@
+# ...existing code...
+# { changed code }
+permissions:
+  contents: read
+  packages: write
+# ...existing code...
+

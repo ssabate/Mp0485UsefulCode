@@ -6,7 +6,7 @@
 
     <groupId>com.iesebre.usefulcode</groupId>
     <artifactId>Mp0485UsefulCodev2.0</artifactId>
-    <version>2.0</version>
+    <version>2.0.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
