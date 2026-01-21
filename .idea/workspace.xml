@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc57992-ec56-4073-abc6-b0189a164c49" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iesebre/usefulcode/DirectAccessFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/home/compartido/GOOGLE_DRIVE/IdeaProjects/2024-2025/Mp0485UsefulCode" value="2sfq7SgmBUv9ORKiocuv5RceYeo" />
+    </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -177,7 +184,11 @@
       <workItem from="1745567665282" duration="304000" />
       <workItem from="1745567993458" duration="599000" />
       <workItem from="1745778330603" duration="23000" />
-      <workItem from="1768580873923" duration="1489000" />
+      <workItem from="1768580873923" duration="2286000" />
+      <workItem from="1768584949482" duration="612000" />
+      <workItem from="1768585582672" duration="30000" />
+      <workItem from="1768764666511" duration="23000" />
+      <workItem from="1768986642303" duration="6283000" />
     </task>
     <servers />
   </component>

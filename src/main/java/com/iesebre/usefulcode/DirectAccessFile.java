@@ -145,37 +145,41 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     private String name = "dades.dat";
     private RandomAccessFile raf;
     private int comptObjs = 0;
-
+    private int position = 0;               //position in object order of the file pointer
     // Constructors
 
     /**
      * Creates a direct access file with the specified name
      *
      * @param name the name given to the file
-     * @throws FileNotFoundException if an error occurs with the file name that prevents its creation
+     * @throws IOException if an error occurs with the file name that prevents its creation
      */
     public DirectAccessFile(String name) throws IOException {
         this.name = name;
         raf = new RandomAccessFile(name, "rw");
         comptObjs=countObjects();
+        this.goToBeginning();
     }
 
     //When creating the daf we need to know how many objects does it have
     private int countObjects() throws IOException {
+        long currentPosition = raf.getFilePointer();
         int count=0;
         this.goToBeginning();
         for(;readObjectInit()!=null;count++);
+        raf.seek(currentPosition);
         return count;
     }
 
     /**
      * Creates a direct access file with the default name
      *
-     * @throws FileNotFoundException if an error occurs with the file name that prevents its creation
+     * @throws IOException if an error occurs with the file name that prevents its creation
      */
     public DirectAccessFile() throws IOException {
         raf = new RandomAccessFile(name, "rw");
         comptObjs=countObjects();
+        this.goToBeginning();
     }
 
     // Getters and setters
@@ -189,10 +193,23 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         return name;
     }
 
+    /**
+     * Retrieves the current position of the file pointer.
+     *
+     * @return the current position of the file pointer as an integer
+     */
+    public int getPosition() {
+        return position;
+    }
+
+    private void setPosition(int position) {
+        this.position = position;
+    }
+
     // Class methods
 
     /**
-     * Writes a new object at the specified position in the file
+     * Writes a new object at the specified position in the file and changes the position of the file pointer
      *
      * @param object   instance of class T to be saved in the file
      * @param position an integer value
@@ -234,7 +251,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
             comptObjs++;
 
         } else this.writeObject(object);
-
+        this.setPosition(position);
         return true;
     }
 
@@ -259,14 +276,14 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     }
 
     /**
-     * Writes a new object at the end of the file
+     * Writes a new object at the end of the file and changes the position of the file pointer
      *
      * @param object instance of class T to be saved in the file
      * @throws IOException if an input/output error occurs
      */
     public void writeObject(T object) throws IOException {
-        // Place at the end of the file
-        raf.seek(raf.length());
+        // Places the pointer at the end of the file
+        this.goToEnd();
 
         // Write the object
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -277,11 +294,13 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         raf.writeInt(data.length); // Write the length of the object
         raf.write(data); // Write the object data
         raf.writeInt(data.length); // Write the length of the object
+        this.setPosition(comptObjs);
         comptObjs++; // Increment the object counter of the file
+
     }
 
     /**
-     * Retrieves the instance at the specified position in the file
+     * Retrieves the instance at the specified position in the file and changes the position of the file pointer.
      *
      * @param position an integer value
      * @return the object read from the file, or null if the position is not greater than or equal to 0, or is nonexistent, or there are no objects
@@ -305,6 +324,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
                 raf.readFully(data); // Read the object data
                 ByteArrayInputStream bis = new ByteArrayInputStream(data);
                 ObjectInputStream ois = new ObjectInputStream(bis);
+                this.setPosition(position);
                 return ((T) ois.readObject());
             }
             compt++;
@@ -314,7 +334,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
 
 
     /**
-     * Retrieves the instance at the current position of the file pointer
+     * Retrieves the instance at the current position of the file pointer and changes the position of the file pointer.
      *
      * @return the object read from the file, or null if the current position of the pointer is incorrect or there are no objects
      * @throws IOException            if an input/output error occurs
@@ -332,6 +352,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
             raf.seek(raf.getFilePointer() + 4);
             ByteArrayInputStream bis = new ByteArrayInputStream(data);
             ObjectInputStream ois = new ObjectInputStream(bis);
+            this.setPosition(this.getPosition()+1);
             return ((T) ois.readObject());
         } catch (ClassNotFoundException | EOFException e) {
             // If the position was incorrect
@@ -366,6 +387,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     public void deleteAll() throws IOException {
         raf.setLength(0L);
         comptObjs = 0; // Set the object counter of the file to 0
+        this.setPosition(0);
     }
 
     /**
@@ -383,6 +405,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
      */
     public void goToBeginning() throws IOException {
         raf.seek(0);
+        this.setPosition(0);
     }
 
     /**
@@ -391,10 +414,49 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
      */
     public void goToEnd() throws IOException {
         raf.seek(raf.length());
+        this.setPosition(comptObjs-1);
     }
 
     /**
-     * Deletes the object at the specified position in the file
+     * Moves to the indicated position of the file. If the position is lower than 0 the file pointer will be moved to
+     * the beginning of the file. If is greater than the number of objects in the file, the file pointer will be moved
+     * to its end. The next call to {@code readObject()} method will return the object located at that position.
+     * @param position an integer value
+     * @throws IOException if an input/output error occurs
+     */
+    public void goToPosition(int position) throws IOException {
+        // If the position is negative, or there are no objects, let's go to the beginning of the file
+        if (position < 0 || comptObjs == 0){
+            this.goToBeginning();
+            this.setPosition(0);
+            return;
+        }
+        // If the position is greater than the number of objects, let's go to the end of the file
+        if (position >= comptObjs){
+           this.goToEnd();
+           this.setPosition(comptObjs-1);
+           return;
+        }
+
+        // Find the desired position in the file, skipping previous objects until reaching
+        int compt = 1;
+        long punter = 0;
+
+        do {
+            raf.seek(punter);
+            int length = raf.readInt(); // Read the length of the object
+
+            if (position + 1 == compt) {  // we are at the desired position
+                this.setPosition(position);
+                return;
+            }
+            compt++;
+            punter += length + 8; // 4 bytes for each size variable we put before and after the object
+        } while (true);
+    }
+
+    /**
+     * Deletes the object at the specified position in the file and changes the position of the file pointer.
      *
      * @param position an integer value
      * @return the deleted object if found, null otherwise. The position must be greater than or equal to 0 and less than the number of objects in the file.
@@ -424,7 +486,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
 
         // Decrement the object counter of the file
         comptObjs--;
-
+        this.setPosition(position);
         return resultat;
     }
 
@@ -451,7 +513,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
     }
 
     /**
-     * Updates the object at the specified position in the file
+     * Updates the object at the specified position in the file and changes the position of the file pointer.
      *
      * @param object the new props of the updated object
      * @param position an integer value
@@ -468,7 +530,7 @@ public class DirectAccessFile<T extends Serializable> implements Closeable, Auto
         // First we delete the current object and then we insert the new
         this.deleteObject(position);
         this.writeObject(object, position);
-
+        this.setPosition(position);
         return resultat;
     }
 
